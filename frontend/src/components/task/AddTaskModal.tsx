@@ -79,43 +79,45 @@ export default function AddTaskModal() {
                     <textarea name="description" value={formControls.description} onChange={handleChange} id="task-description" className="border outline-0 min-h-24 bg-white/45 shadow border-gray-300 p-2 rounded-xl" placeholder="Enter your Description"></textarea>
                 </Field>
 
-                {/* Task status */}
-               <Field>
-                    <FieldLabel htmlFor="task-status">Status</FieldLabel>
-                    <Select value={formControls.status} onValueChange={value => setFormControl(prev => ({...prev, status: value as CreateTaskInput["status"]}))}>
-                        <SelectTrigger className="w-full bg-white/45 pl-2 rounded-xl shadow">
-                            <SelectValue placeholder="Select status" />
-                        </SelectTrigger>
+                <div className="flex items-center gap-4">
+                    {/* Task status */}
+                    <Field>
+                            <FieldLabel htmlFor="task-status">Status</FieldLabel>
+                            <Select value={formControls.status} onValueChange={value => setFormControl(prev => ({...prev, status: value as CreateTaskInput["status"]}))}>
+                                <SelectTrigger className="w-full bg-white/45 pl-2 rounded-xl shadow">
+                                    <SelectValue placeholder="Select status" />
+                                </SelectTrigger>
 
-                        <SelectContent className={`bg-gray-200 rounded-xl border border-slate-200 shadow-lg`}>
-                            <SelectItem className={`hover:bg-white/45`} value="todo">To Do</SelectItem>
-                            <SelectItem className={`hover:bg-white/45`}  value="in-progress">In Progress</SelectItem>
-                            <SelectItem className={`hover:bg-white/45`}  value="done">Done</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <FieldDescription>
-                        {formErrors.status && <div className="text-xs text-red-500">{formErrors.status}</div>}
-                    </FieldDescription>
-               </Field>
+                                <SelectContent className={`bg-gray-200 rounded-xl border border-slate-200 shadow-lg`}>
+                                    <SelectItem className={`hover:bg-white/45`} value="todo">To Do</SelectItem>
+                                    <SelectItem className={`hover:bg-white/45`}  value="in-progress">In Progress</SelectItem>
+                                    <SelectItem className={`hover:bg-white/45`}  value="done">Done</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FieldDescription>
+                                {formErrors.status && <div className="text-xs text-red-500">{formErrors.status}</div>}
+                            </FieldDescription>
+                    </Field>
 
-               {/* Task priority */}
-               <Field>
-                    <FieldLabel htmlFor="task-priority">Priority</FieldLabel>
-                    <Select value={formControls.priority} onValueChange={value => setFormControl(prev => ({...prev, priority: value as CreateTaskInput["priority"]}))}>
-                        <SelectTrigger className="w-full bg-white/45 pl-2 rounded-xl shadow">
-                            <SelectValue placeholder="Select Priority" />
-                        </SelectTrigger>
+                    {/* Task priority */}
+                    <Field>
+                            <FieldLabel htmlFor="task-priority">Priority</FieldLabel>
+                            <Select value={formControls.priority} onValueChange={value => setFormControl(prev => ({...prev, priority: value as CreateTaskInput["priority"]}))}>
+                                <SelectTrigger className="w-full bg-white/45 pl-2 rounded-xl shadow">
+                                    <SelectValue placeholder="Select Priority" />
+                                </SelectTrigger>
 
-                        <SelectContent className={`bg-gray-200 rounded-xl border border-slate-200 shadow-lg`}>
-                            <SelectItem className={`hover:bg-white/45`} value="low">Low</SelectItem>
-                            <SelectItem className={`hover:bg-white/45`}  value="medium">Medium</SelectItem>
-                            <SelectItem className={`hover:bg-white/45`}  value="high">High</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <FieldDescription>
-                        {formErrors.priority && <div className="text-xs text-red-500">{formErrors.priority}</div>}
-                    </FieldDescription>
-               </Field>
+                                <SelectContent className={`bg-gray-200 rounded-xl border border-slate-200 shadow-lg`}>
+                                    <SelectItem className={`hover:bg-white/45`} value="low">Low</SelectItem>
+                                    <SelectItem className={`hover:bg-white/45`}  value="medium">Medium</SelectItem>
+                                    <SelectItem className={`hover:bg-white/45`}  value="high">High</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FieldDescription>
+                                {formErrors.priority && <div className="text-xs text-red-500">{formErrors.priority}</div>}
+                            </FieldDescription>
+                    </Field>
+                </div>
 
                <div className="flex items-center justify-end gap-3">
                  <Button onClick={() => setOpen(false)} size={`sm`} variant={`outline`} className={`border cursor-pointer border-gray-400 rounded-xl`}>Cancel</Button>

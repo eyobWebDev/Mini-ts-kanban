@@ -11,6 +11,7 @@ export type Task = {
     description?: string
     status: TaskStatus
     priority: TaskPriority
+    dueDate: string
     createdAt: string
     updatedAt: string
 }
@@ -19,7 +20,7 @@ export type CreateTaskInput = {
     title: string, description?: string, status: TaskStatus, priority: TaskPriority
 }
 
-type UpdateTaskInput = Partial<Pick<Task, "title" | "description" | "status" | "priority">>
+export type UpdateTaskInput = Partial<Pick<Task, "title" | "description" | "status" | "priority" | "dueDate">>
 
 type TaskStore = {
     tasks: Task[],
@@ -38,7 +39,7 @@ export const useTaskStore = create<TaskStore>((set) => ({
         const now = new Date().toISOString()
         const newTask: Task = {
             id: uuidv4(), priority: input.priority, createdAt: now, updatedAt: now,
-            title: input.title, description: input.description, status: input.status,
+            title: input.title, description: input.description, status: input.status, dueDate: now
         }
         set(state => ({tasks: [...state.tasks, newTask]}))
     },

@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import type { Task } from "@/store/useTaskStore";
-import { ChevronRight } from "lucide-react";
+import EditTaskDrawer from "../task/EditTaskDrawer";
 
 type TaskCardProps = {
   task: Task
@@ -57,10 +57,7 @@ export default function TaskCard({task}: TaskCardProps) {
             </div>
           </div>
 
-          <button className="inline-flex items-center gap-1 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50">
-            Open
-            <ChevronRight size={14} />
-          </button>
+          <EditTaskDrawer task={task} />
         </div>
       </CardContent>
     </Card>
