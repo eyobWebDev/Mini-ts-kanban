@@ -2,10 +2,10 @@ import { create } from 'zustand'
 import { v4 as uuidv4} from "uuid"
 
 
-type TaskStatus = "todo" | "in-progress" | "done"
+export type TaskStatus = "todo" | "in-progress" | "done"
 type TaskPriority = "low" | "medium" | "high" 
 
-type Task = {
+export type Task = {
     readonly id: string
     title: string
     description?: string
@@ -15,8 +15,8 @@ type Task = {
     updatedAt: string
 }
 
-type CreateTaskInput = {
-    title: string, description?: string, status: TaskStatus
+export type CreateTaskInput = {
+    title: string, description?: string, status: TaskStatus, priority: TaskPriority
 }
 
 type UpdateTaskInput = Partial<Pick<Task, "title" | "description" | "status" | "priority">>
@@ -37,8 +37,8 @@ export const useTaskStore = create<TaskStore>((set) => ({
     createTask: (input) => {
         const now = new Date().toISOString()
         const newTask: Task = {
-            id: uuidv4(), priority: "medium", createdAt: now, updatedAt: now,
-            title: input.title, description: input.description, status: input.status
+            id: uuidv4(), priority: input.priority, createdAt: now, updatedAt: now,
+            title: input.title, description: input.description, status: input.status,
         }
         set(state => ({tasks: [...state.tasks, newTask]}))
     },

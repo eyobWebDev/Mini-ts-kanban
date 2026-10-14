@@ -1,12 +1,16 @@
-import { Button } from './components/ui/button'
+import { Route, Routes } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import { Toaster } from 'sonner'
 
 function App() {
 
   return (
-    <div className="">
-      <h1>Welcome to the App</h1>
-      <Button variant={'destructive'}  className="">
-        Click Me</Button>
+    <div className='w-full'>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+      <Toaster position='top-center' />
+
     </div>
   )
 }
